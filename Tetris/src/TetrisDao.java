@@ -16,7 +16,7 @@ public class TetrisDao {
     
     private final int keys[];
     
-	public Cells block;
+	public CellComposition block;
     
     public TetrisDao(int[][] Maps, int[] Keys) {
     	this.map=Maps;
@@ -24,7 +24,7 @@ public class TetrisDao {
     	this.totalheight = map.length;
     	this.totalwidth=map[0].length;
     	int which = rand.nextInt(7) + 1;
-    	block = new Cells(this.map, which);
+    	block = new CellComposition(this.map, which);
     	setup();
     }
 	 
@@ -48,7 +48,7 @@ public class TetrisDao {
 	 }
 
 //judge if fail
-    public boolean pf_failed(Cells block) {
+    public boolean pf_failed(CellComposition block) {
         int high = block.getHighestRow();
         int low = block.getLowestRow();
 
@@ -89,7 +89,7 @@ public class TetrisDao {
     }
 
     //judge if board
-    public boolean isBoarded(Cells block) {
+    public boolean isBoarded(CellComposition block) {
         int[][] axis=block.getaxis();
         for(int i=0;i<4;i++) {
             if(map[axis[i][0]+1][axis[i][1]]!=0) {
@@ -126,7 +126,7 @@ public class TetrisDao {
     
     public void createBlock() {
 		int which=rand.nextInt(7)+1;
-		this.block=new Cells(this.map,which);
+		this.block=new CellComposition(this.map,which);
 		this.block.enableAudoDown();
     }
 }

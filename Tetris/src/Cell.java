@@ -1,51 +1,39 @@
-
+import java.lang.Object;
 import java.util.Timer;
 import java.util.TimerTask;
 
-class Cell{
+class Cell implements CellComponent{
 	private int row;
 	private int col;
 	
-	Timer timer;
-	public void setrow(int x) {
-		this.row=x;
+	Cell(int _row, int _col)
+	{
+		this.row = _row;
+		this.col = _col;
 	}
 	
 	public int getrow() {
 		return this.row;
 	}
 	
-	public void setcol(int x) {
-		this.col=x;
-	}
-	
 	public int getcol() {
 		return this.col;
 	}
 	
-	public void down() {
+	public CellComponent Up() {
+		throw new UnsupportedOperationException("");
+	}
+	
+	public void Down() {
 		row ++;
 	}
 	
-	public void left() {
+	public void Left() {
 		col --;
 	}
 	
-	public void right() {
+	public void Right() {
 		col ++;
-	}
-	
-	public void AutoMove(boolean x) {
-		if(x==true) {
-			timer=new Timer();
-			timer.schedule(new TimerTask() {
-				public void run() 
-				{
-					row+=1;
-				}
-			},0,400);
-		}else
-			timer.cancel();
 	}
 }
 
